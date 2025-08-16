@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+<style>
+body { font-family: Arial, sans-serif; background:#1a0000; color:white; padding:20px; }
+h1 { color:#ff6666; }
+</style>
+</head>
+<body>
+<h1>Dashboard</h1>
+<p>Welcome! คุณเข้าสู่ระบบด้วย Key: <span id="keyDisplay"></span></p>
+<button onclick="logout()">Logout</button>
+
+<script>
+const key = localStorage.getItem("loginKey");
+if(!key){
+    alert("❌ กรุณา Login ก่อน");
+    window.location.href="index.html";
+} else {
+    document.getElementById("keyDisplay").innerText = key;
+}
+
+function logout(){
+    localStorage.removeItem("loginKey");
+    window.location.href="index.html";
+}
+</script>
+</body>
+</html>
