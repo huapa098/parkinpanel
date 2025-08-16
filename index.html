@@ -1,703 +1,251 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PANEL KINSHOP</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #1a0000, #4b0000);
-            color: white;
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(90deg, red, #ff3300);
-            text-align: center;
-            padding: 20px;
-            font-weight: bold;
-            font-size: 30px;
-            color: white;
-            text-shadow: 0 0 20px red, 0 0 40px red;
-            box-shadow: 0 0 25px red, 0 0 50px #ff3300;
-            animation: glow 2s infinite alternate;
-        }
-
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 20px red, 0 0 40px #ff3300;
-            }
-            to {
-                box-shadow: 0 0 40px red, 0 0 80px #ff6600;
-            }
-        }
-
-        .container {
-            padding: 20px;
-            max-width: 700px;
-            margin: 50px auto;
-            animation: float 5s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(-10px);
-            }
-            50% {
-                transform: translateY(10px);
-            }
-        }
-
-        .option {
-            background: #330000;
-            border: 2px solid red;
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 20px red;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .option:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px red, 0 0 60px #ff3300;
-        }
-
-        .option h3 {
-            margin: 0;
-            font-size: 20px;
-            color: #ff6666;
-            text-shadow: 0 0 10px red;
-        }
-
-        .toggle {
-            appearance: none;
-            width: 50px;
-            height: 25px;
-            background: #444;
-            border-radius: 15px;
-            position: relative;
-            cursor: pointer;
-            outline: none;
-            transition: background 0.3s ease-in-out;
-        }
-
-        .toggle:checked {
-            background: #ff0000;
-        }
-
-        .toggle:before {
-            content: '';
-            width: 20px;
-            height: 20px;
-            background: white;
-            border-radius: 50%;
-            position: absolute;
-            top: 2.5px;
-            left: 2.5px;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .toggle:checked:before {
-            transform: translateX(25px);
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 12px;
-            color: #888;
-            text-shadow: 0 0 10px red;
-        }
-    </style>
-    <script>
-        /**
-         * Esta función maneja el estado de las opciones del panel (activadas/desactivadas).
-         * Aquí puedes agregar tus propios códigos para cada opción.
-         * @param {string} optionName - Nombre de la opción activada.
-         * @param {boolean} isChecked - Estado de la opción (true = activada, false = desactivada).
-         */
-        function toggleOption(optionName, isChecked) {
-            const audio = new Audio('https://www.soundjay.com/button/sounds/beep-07.mp3');
-            audio.play(); // Reproducir sonido al interactuar con la opción.
-
-            if (isChecked) {
-                console.log(`${optionName} activado`);
-                alert(`${optionName} activado`);
-                // **Aquí puedes agregar tu código para activar esta opción.**
-                if (optionName === "𝐀𝐈𝐌𝐁𝐎𝐓") {
-                    phone.brand_model=General iOS Device
-os.version=iOS 14.0 or later
-hardware.config=A-Series Processor, 4GB+ RAM, 64GB+ Storage
-screen.resolution_dpi=Varies, 326 DPI or higher
-permissions.access=system_settings, storage
-security.config=auth_faceid, auth_touchid, encryption_enabled
-user.preferences=sensitivity_high, graphics_high, performance_optimized
-network.connectivity=WiFi, 4G LTE, 5G
-installed.apps=Free Fire, Discord, WhatsApp
-game.version=Free Fire 1.104.10, current_config=default
-
-# Sensitivity and View Configuration for Free Fire
-com.dts.freefireth~[sensitivity]=9000
-coding.xml=enabled
-config.xml=true
-file.xml=config_file
-
-# FREE FIRE Script Update for Enhanced Functionality
-mconfig=aimenhanced.xml
-script=aimlock.target~area="HEAD"
-configuration=dpi.screen
-
-# Version 1.104.10
-configuration=aimbot.freefireth
-mconfig=aimheadshot.freefireth
-mconfig=sensitivity.freefireth
-mconfig=aimlock.target.freefireth
-mconfig=aimfov.freefireth
-
-feature.activated.shortcut=true
-configuration.aimbot=on
-configuration.aimfov=on
-configuration.aimlock.head=on
-configuration.aimrednumbers=on
-configuration.dpi=9000
-configuration.anticheat=on
-System.web.configuration.Scripting=true
-
-system.configuration.processing=100%
-configuration.file.enhancedaim=enhancedaim_file
-file.config=config_file
-file.script=script_file
-enhancedaim.nocheat=enabled
-script.aimlock.head=enabled
-script.nobanned=enabled
-configuration.aimbot=enabled
-script.aimheadshot=enabled
-script.red.damage.numbers=enabled
-configuration.aimfov=enable
-configuration.dpiscreen=high
-configuration.60fps=true
-configuration.90hz=true
-dpi.sensitivity=9000
-screen.dpi=high
-sensitivity.macos.xml=9000
-
-feature.name=OPTIMIZATION
-feature.target=screen
-feature.description=Add entries to your Web.config file required by any .NET 3.5 AJAX.NET application.
-feature.blocks=OPTIMIZATION
-feature.config.sections=true
-type=System.Web.Configuration.ScriptingGameServiceWorkAllMode
-
-# Sensitivity Specifications
-sensitivity.X=9000.0
-sensitivity.Y=9000.0
-sensitivity.Joystick=100.0
-
-# Suppressor Specifications
-suppressor.per_shot.value=25
-suppressor.per_shot.factor=0.25
-suppressor.per_sight.value=25
-suppressor.per_sight.factor=0.25
-
-# Aim Assist Specifications
-aimAssist.value=30
-aimAssist.factor=0.3
-
-# Special Keys
-special_keys.Return=#R
-special_keys.ESC=#E
-special_keys.Tab=#T
-special_keys.Hash=#H
-
-# Free Fire Sensitivity and View Configuration
-# Default Values
-DEFAULT_VIEW=64
-DEFAULT_1XSC=80
-DEFAULT_2XSC=85
-DEFAULT_4XSC=48
-DEFAULT_8XSC=53
-DEFAULT_DPI=2457
-DEFAULT_FOV=153
-DEFAULT_TOUCH_SENSITIVITY=80
-DEFAULT_X=2304
-DEFAULT_Y=144
-
-# Custom Values
-CUSTOM_VIEW=789
-CUSTOM_1XSC=768
-CUSTOM_2XSC=840
-CUSTOM_4XSC=837
-CUSTOM_8XSC=293
-CUSTOM_DPI=1088
-CUSTOM_FOV=256
-CUSTOM_TOUCH_SENSITIVITY=720
-CUSTOM_X=304
-CUSTOM_Y=4352
-
-# Apply Custom Configuration
-VIEW=${CUSTOM_VIEW}
-1XSC=${CUSTOM_1XSC}
-2XSC=${CUSTOM_2XSC}
-4XSC=${CUSTOM_4XSC}
-8XSC=${CUSTOM_8XSC}
-DPI=${CUSTOM_DPI}
-FOV=${CUSTOM_FOV}
-TOUCH_SENSITIVITY=${CUSTOM_TOUCH_SENSITIVITY}
-X=${CUSTOM_X}
-Y=${CUSTOM_Y}
-
-# Creator Credits to @Diyzu CHEAT
-# Code owned by JEXE, give credits
-signature=JEXE
-block_version=1.104.10
-                    console.log("Aimbot activado: ejecutando tu código...");
-                }
-                if (optionName === "AIMBOT") {
-                    const contentCache = {
-
-  compulsory: {
-    ios: {
-      gameassetbundles: {
-        config: {
-          Open: {
-            "Iphone Ob40 Editor": "ANTIBAN 100% |",
-            "ipad Ob40 Editor": "ANTIBAN 100% |",
-            EDITOR: {
-              "Flags": 9999,
-              "MaximumSpeed": 9999,
-              "TimeToMaximumSpeed": 9999
-            },
-            "Iphone Ob40 Editor sensi": {
-              TimeToMaximumSpeed: 9999
-            },
-            "ipad Ob40 Editor sensi": {
-              TimeToMaximumSpeed: 9999
-            },
-            "Iphone Ob40 Editor >FILE<FREEFIRE<\<FILE>FREEFIRE<\>": "AIMBOT_HEAD+AIMLOCK_HEAD+NO_RECOIL+AIMFOV",
-            "ipad Ob40 Editor >FILE<FREEFIRE<\<FILE>FREEFIRE<\>": "AIMBOT_HEAD+AIMLOCK_HEAD+NO_RECOIL+AIMFOV",
-
-            AIMLOCK_HEAD: {
-
-// ... AIMLOCK_HEAD Escopetas ...
-
-	AIMLOCK_HEAD_OB40_gun_M1887_100: true,
-	AIMLOCK_HEAD_OB40_gun_M1887-X_100: true,
-	AIMLOCK_HEAD_OB40_gun_SPAS12_100: true,
-	AIMLOCK_HEAD_OB40_gun_M1014_100: true,
-	AIMLOCK_HEAD_OB40_gun_MAG-7_100: true,
-	AIMLOCK_HEAD_OB40_gun_CHARGEBUSTER_100: true,
-	AIMLOCK_HEAD_OB40_gun_TROGON_100: true,
-	
-// ... AIMLOCK_HEAD Subfusiles ...
-
-	AIMLOCK_HEAD_OB40_gun_UMP_100: true,
-	AIMLOCK_HEAD_OB40_gun_MP5_100: true,
-	AIMLOCK_HEAD_OB40_gun_VSS_100: true,
-	AIMLOCK_HEAD_OB40_gun_MP40_100: true,
-	AIMLOCK_HEAD_OB40_gun_P90_100: true,
-	AIMLOCK_HEAD_OB40_gun_CG15_100: true,
-	AIMLOCK_HEAD_OB40_gun_THOMPSON_100: true,
-	AIMLOCK_HEAD_OB40_gun_BIZON_100: true,
-	AIMLOCK_HEAD_OB40_gun_VECTOR_100: true,
-	AIMLOCK_HEAD_OB40_gun_MAC10_100: true,
-	
-// ... AIMLOCK_HEAD Rifles de Asalto ...
-
-	AIMLOCK_HEAD_OB40_gun_M4A1_100: true,
-	AIMLOCK_HEAD_OB40_gun_AK47_100: true,
-	AIMLOCK_HEAD_OB40_gun_M14_100: true,
-	AIMLOCK_HEAD_OB40_gun_SCAR_100: true,
-	AIMLOCK_HEAD_OB40_gun_GROZA_100: true,
-	AIMLOCK_HEAD_OB40_gun_SKS_100: true,
-	AIMLOCK_HEAD_OB40_gun_M249_100: true,
-	AIMLOCK_HEAD_OB40_gun_FAMAS_100: true,
-	AIMLOCK_HEAD_OB40_gun_SVD_100: true,
-	AIMLOCK_HEAD_OB40_gun_XM8_100: true,
-	AIMLOCK_HEAD_OB40_gun_M60_100: true,
-	AIMLOCK_HEAD_OB40_gun_AN94_100: true,
-	AIMLOCK_HEAD_OB40_gun_PLASMA_100: true,
-	AIMLOCK_HEAD_OB40_gun_AUG_100: true,
-	AIMLOCK_HEAD_OB40_gun_PARAFAL_100: true,
-	AIMLOCK_HEAD_OB40_gun_WOODPECKER_100: true,
-	AIMLOCK_HEAD_OB40_gun_KORD_100: true,
-	AIMLOCK_HEAD_OB40_gun_KINGFISHER_100: true,
-	AIMLOCK_HEAD_OB40_gun_GROZA-X_100: true,
-	AIMLOCK_HEAD_OB40_gun_M249-X_100: true,
-	AIMLOCK_HEAD_OB40_gun_SVD-Y_100: true,
-	AIMLOCK_HEAD_OB40_gun_G36_100: true,
-	AIMLOCK_HEAD_OB40_gun_AC80_100: true,
-	AIMLOCK_HEAD_OB40_gun_ARMAESCUDO_100: true,
-	
-// ... AIMLOCK_HEAD Francotirador ...
-
-	AIMLOCK_HEAD_OB40_gun_AWM_100: true,
-	AIMLOCK_HEAD_OB40_gun_AWM-Y_100: true,
-	AIMLOCK_HEAD_OB40_gun_KAR98K_100: true,
-	AIMLOCK_HEAD_OB40_gun_M828_100: true,
-	AIMLOCK_HEAD_OB40_gun_M24_100: true,
-	
-// ... AIMLOCK_HEAD Pistola ...
-
-	AIMLOCK_HEAD_OB40_gun_USP_100: true,
-	AIMLOCK_HEAD_OB40_gun_DESERTEAGLE_100: true,
-	AIMLOCK_HEAD_OB40_gun_G18_100: true,
-	AIMLOCK_HEAD_OB40_gun_M1873_100: true,
-	AIMLOCK_HEAD_OB40_gun_M500_100: true,
-	AIMLOCK_HEAD_OB40_gun_M1917_100: true,
-	AIMLOCK_HEAD_OB40_gun_USP-2_100: true,
-	AIMLOCK_HEAD_OB40_gun_MINIUZI_100: true,
-	
-            },
-
-            AIMBOT_HEAD: {
-
-// ... AIMBOT_HEAD Escopeta ...
-
-	AIMBOT_HEAD_OB40_gun_M1887_100: true,
-	AIMBOT_HEAD_OB40_gun_M1887-X_100: true,
-	AIMBOT_HEAD_OB40_gun_SPAS12_100: true,
-	AIMBOT_HEAD_OB40_gun_M1014_100: true,
-	AIMBOT_HEAD_OB40_gun_MAG-7_100: true,
-	AIMBOT_HEAD_OB40_gun_CHARGEBUSTER_100: true,
-	AIMBOT_HEAD_OB40_gun_TROGON_100: true,
-	
-// ... AIMBOT_HEAD Subfusiles ...
-
-	AIMBOT_HEAD_OB40_gun_UMP_100: true,
-	AIMBOT_HEAD_OB40_gun_MP5_100: true,
-	AIMBOT_HEAD_OB40_gun_VSS_100: true,
-	AIMBOT_HEAD_OB40_gun_MP40_100: true,
-	AIMBOT_HEAD_OB40_gun_P90_100: true,
-	AIMBOT_HEAD_OB40_gun_CG15_100: true,
-	AIMBOT_HEAD_OB40_gun_THOMPSON_100: true,
-	AIMBOT_HEAD_OB40_gun_BIZON_100: true,
-	AIMBOT_HEAD_OB40_gun_VECTOR_100: true,
-	AIMBOT_HEAD_OB40_gun_MAC10_100: true,
-
-// ... AIMBOT_HEAD Rifles de Asalto ...
-
-	AIMBOT_HEAD_OB40_gun_M4A1_100: true,
-	AIMBOT_HEAD_OB40_gun_AK47_100: true,
-	AIMBOT_HEAD_OB40_gun_M14_100: true,
-	AIMBOT_HEAD_OB40_gun_SCAR_100: true,
-	AIMBOT_HEAD_OB40_gun_GROZA_100: true,
-	AIMBOT_HEAD_OB40_gun_SKS_100: true,
-	AIMBOT_HEAD_OB40_gun_M249_100: true,
-	AIMBOT_HEAD_OB40_gun_FAMAS_100: true,
-	AIMBOT_HEAD_OB40_gun_SVD_100: true,
-	AIMBOT_HEAD_OB40_gun_XM8_100: true,
-	AIMBOT_HEAD_OB40_gun_M60_100: true,
-	AIMBOT_HEAD_OB40_gun_AN94_100: true,
-	AIMBOT_HEAD_OB40_gun_PLASMA_100: true,
-	AIMBOT_HEAD_OB40_gun_AUG_100: true,
-	AIMBOT_HEAD_OB40_gun_PARAFAL_100: true,
-	AIMBOT_HEAD_OB40_gun_WOODPECKER_100: true,
-	AIMBOT_HEAD_OB40_gun_KORD_100: true,
-	AIMBOT_HEAD_OB40_gun_KINGFISHER_100: true,
-	AIMBOT_HEAD_OB40_gun_GROZA-X_100: true,
-	AIMBOT_HEAD_OB40_gun_M249-X_100: true,
-	AIMBOT_HEAD_OB40_gun_SVD-Y_100: true,
-	AIMBOT_HEAD_OB40_gun_G36_100: true,
-	AIMBOT_HEAD_OB40_gun_AC80_100: true,
-	AIMBOT_HEAD_OB40_gun_ARMAESCUDO_100: true,
-              
-// ... AIMBOT_HEAD Francotirador ...
-
-	AIMBOT_HEAD_OB40_gun_AWM_100: true,
-	AIMBOT_HEAD_OB40_gun_AWM-Y_100: true,
-	AIMBOT_HEAD_OB40_gun_KAR98K_100: true,
-	AIMBOT_HEAD_OB40_gun_M828_100: true,
-	AIMBOT_HEAD_OB40_gun_M24_100: true,
-	
-// ... AIMBOT_HEAD Pistola ...
-
-	AIMBOT_HEAD_OB40_gun_USP_100: true,
-	AIMBOT_HEAD_OB40_gun_DESERTEAGLE_100: true,
-	AIMBOT_HEAD_OB40_gun_G18_100: true,
-	AIMBOT_HEAD_OB40_gun_M1873_100: true,
-	AIMBOT_HEAD_OB40_gun_M500_100: true,
-	AIMBOT_HEAD_OB40_gun_M1917_100: true,
-	AIMBOT_HEAD_OB40_gun_USP-2_100: true,
-	AIMBOT_HEAD_OB40_gun_MINIUZI_100: true,
-	
-			},
-			
-			NO_RECOIL:	{
-			
-// ... NO_RECOIL Escopetas ...
-
-	NO_RECOIL_OB40_gun_M1887_0: true,	
-	NO_RECOIL_OB40_gun_M1887-X_0: true,
-	NO_RECOIL_OB40_gun_SPAS12_0: true,
-	NO_RECOIL_OB40_gun_M1014_0: true,
-	NO_RECOIL_OB40_gun_MAG-7_0: true,
-	NO_RECOIL_OB40_gun_CHARGEBUSTER_0: true,
-	NO_RECOIL_OB40_gun_TROGON_0: true,
-	
-// ... NO_RECOIL Subfusiles ...
-
-	NO_RECOIL_OB40_gun_UMP_0: true,
-	NO_RECOIL_OB40_gun_MP5_0: true,
-	NO_RECOIL_OB40_gun_VSS_0: true,
-	NO_RECOIL_OB40_gun_MP40_0: true,
-	NO_RECOIL_OB40_gun_P90_0: true,
-	NO_RECOIL_OB40_gun_CG15_0: true,
-	NO_RECOIL_OB40_gun_THOMPSON_0: true,
-	NO_RECOIL_OB40_gun_BIZON_0: true,
-	NO_RECOIL_OB40_gun_VECTOR_0: true,
-	NO_RECOIL_OB40_gun_MAC10_0: true,
-	
-// ... NO_RECOIL Rifles de Asalto ...
-
-	NO_RECOIL_OB40_gun_M4A1_0: true,
-	NO_RECOIL_OB40_gun_AK47_0: true,
-	NO_RECOIL_OB40_gun_M14_0: true,
-	NO_RECOIL_OB40_gun_SCAR_0: true,
-	NO_RECOIL_OB40_gun_GROZA_0: true,
-	NO_RECOIL_OB40_gun_SKS_0: true,
-	NO_RECOIL_OB40_gun_M249_0: true,
-	NO_RECOIL_OB40_gun_FAMAS_0: true,
-	NO_RECOIL_OB40_gun_SVD_0: true,
-	NO_RECOIL_OB40_gun_XM8_0: true,
-	NO_RECOIL_OB40_gun_M60_0: true,
-	NO_RECOIL_OB40_gun_AN94_0: true,
-	NO_RECOIL_OB40_gun_PLASMA_0: true,
-	NO_RECOIL_OB40_gun_AUG_0: true,
-	NO_RECOIL_OB40_gun_PARAFAL_0: true,
-	NO_RECOIL_OB40_gun_WOODPECKER_0: true,
-	NO_RECOIL_OB40_gun_KORD_0: true,
-	NO_RECOIL_OB40_gun_KINGFISHER_0: true,
-	NO_RECOIL_OB40_gun_GROZA-X_0: true,
-	NO_RECOIL_OB40_gun_M249-X_0: true,
-	NO_RECOIL_OB40_gun_SVD-Y_0: true,
-	NO_RECOIL_OB40_gun_G36_0: true,
-	NO_RECOIL_OB40_gun_AC80_0: true,
-	NO_RECOIL_OB40_gun_ARMAESCUDO_0: true,
-	
-// ... NO_RECOIL Francotirador ...
-
-	NO_RECOIL_OB40_gun_AWM_0: true,
-	NO_RECOIL_OB40_gun_AWM-Y_0: true,
-	NO_RECOIL_OB40_gun_KAR98K_0: true,
-	NO_RECOIL_OB40_gun_M828_0: true,
-	NO_RECOIL_OB40_gun_M24_0: true,
-	
-// ... NO_RECOIL Pistola ...
-
-	NO_RECOIL_OB40_gun_USP_0: true,
-	NO_RECOIL_OB40_gun_DESERTEAGLE_0: true,
-	NO_RECOIL_OB40_gun_G18_0: true,
-	NO_RECOIL_OB40_gun_M1873_0: true,
-	NO_RECOIL_OB40_gun_M500_0: true,
-	NO_RECOIL_OB40_gun_M1917_0: true,
-	NO_RECOIL_OB40_gun_USP-2_0: true,
-	NO_RECOIL_OB40_gun_MINIUZI_0: true,
-	
-            },		
-            
-			 AIMFOV:	{
-
-	// ... Aimfov Escopetas ...
-
-	AIMFOV_OB40_gun_M1887_180: true,
-	AIMFOV_OB40_gun_M1887-X_180: true,
-	AIMFOV_OB40_gun_SPAS12_180: true,
-	AIMFOV_OB40_gun_M1014_180: true,
-	AIMFOV_OB40_gun_MAG-7_180: true,
-	AIMFOV_OB40_gun_CHARGEBUSTER_180: true,
-	AIMFOV_OB40_gun_TROGON_180: true,
-	
-// ... Aimfov Subfusiles ...
-
-	AIMFOV_OB40_gun_UMP_180: true,
-	AIMFOV_OB40_gun_MP5_180: true,
-	AIMFOV_OB40_gun_VSS_180: true,
-	AIMFOV_OB40_gun_MP40_180: true,
-	AIMFOV_OB40_gun_P90_180: true,
-	AIMFOV_OB40_gun_CG15_180: true,
-	AIMFOV_OB40_gun_THOMPSON_180: true,
-	AIMFOV_OB40_gun_BIZON_180: true,
-	AIMFOV_OB40_gun_VECTOR_180: true,
-	AIMFOV_OB40_gun_MAC10_180: true,
-	
-// ... Aimfov Rifles de Asalto ...
-
-	AIMFOV_OB40_gun_M4A1_180: true,
-	AIMFOV_OB40_gun_AK47_180: true,
-	AIMFOV_OB40_gun_M14_180: true,
-	AIMFOV_OB40_gun_SCAR_180: true,
-	AIMFOV_OB40_gun_GROZA_180: true,
-	AIMFOV_OB40_gun_SKS_180: true,
-	AIMFOV_OB40_gun_M249_180: true,
-	AIMFOV_OB40_gun_FAMAS_180: true,
-	AIMFOV_OB40_gun_SVD_180: true,
-	AIMFOV_OB40_gun_XM8_180: true,
-	AIMFOV_OB40_gun_M60_180: true,
-	AIMFOV_OB40_gun_AN94_180: true,
-	AIMFOV_OB40_gun_PLASMA_180: true,
-	AIMFOV_OB40_gun_AUG_180: true,
-	AIMFOV_OB40_gun_PARAFAL_180: true,
-	AIMFOV_OB40_gun_WOODPECKER_180: true,
-	AIMFOV_OB40_gun_KORD_180: true,
-	AIMFOV_OB40_gun_KINGFISHER_180: true,
-	AIMFOV_OB40_gun_GROZA-X_180: true,
-	AIMFOV_OB40_gun_M249-X_180: true,
-	AIMFOV_OB40_gun_SVD-Y_180: true,
-	AIMFOV_OB40_gun_G36_180: true,
-	AIMFOV_OB40_gun_AC80_180: true,
-	AIMFOV_OB40_gun_ARMAESCUDO_180: true,
-	
-// ... Aimfov Francotirador ...
-
-	AIMFOV_OB40_gun_AWM_180: true,
-	AIMFOV_OB40_gun_AWM-Y_180: true,
-	AIMFOV_OB40_gun_KAR98K_180: true,
-	AIMFOV_OB40_gun_M828_180: true,
-	AIMFOV_OB40_gun_M24_180: true,
-	
-// ... Aimfov Pistola ...
-
-	AIMFOV_OB40_gun_USP_180: true,
-	AIMFOV_OB40_gun_DESERTEAGLE_180: true,
-	AIMFOV_OB40_gun_G18_180: true,
-	AIMFOV_OB40_gun_M1873_180: true,
-	AIMFOV_OB40_gun_M500_180: true,
-	AIMFOV_OB40_gun_M1917_180: true,
-	AIMFOV_OB40_gun_USP-2_180: true,
-	AIMFOV_OB40_gun_MINIUZI_180: true,
-	
-            },
-
-			 SENSI:	{
-
-	// ... Sensi Escopetas ...
-
-	SENSI_OB40_gun_M1887_9999: true,
-	SENSI_OB40_gun_M1887-X_9999: true,
-	SENSI_OB40_gun_SPAS12_9999: true,
-	SENSI_OB40_gun_M1014_9999: true,
-	SENSI_OB40_gun_MAG-7_180: true,
-	SENSI_OB40_gun_CHARGEBUSTER_9999: true,
-	SENSI_OB40_gun_TROGON_9999: true,
-	
-// ... Sensi Subfusiles ...
-
-	SENSI_OB40_gun_UMP_9999: true,
-	SENSI_OB40_gun_MP5_9999: true,
-	SENSI_OB40_gun_VSS_9999: true,
-	SENSI_OB40_gun_MP40_9999: true,
-	SENSI_OB40_gun_P90_9999: true,
-	SENSI_OB40_gun_CG15_9999: true,
-	SENSI_OB40_gun_THOMPSON_9999: true,
-	SENSI_OB40_gun_BIZON_9999: true,
-	SENSI_OB40_gun_VECTOR_9999: true,
-	SENSI_OB40_gun_MAC10_9999: true,
-	
-// ... Sensi Rifles de Asalto ...
-
-	SENSI_OB40_gun_M4A1_9999: true,
-	SENSI_OB40_gun_AK47_9999: true,
-	SENSI_OB40_gun_M14_9999: true,
-	SENSI_OB40_gun_SCAR_9999: true,
-	SENSI_OB40_gun_GROZA_9999: true,
-	SENSI_OB40_gun_SKS_9999: true,
-	SENSI_OB40_gun_M249_9999: true,
-	SENSI_OB40_gun_FAMAS_9999: true,
-	SENSI_OB40_gun_SVD_9999: true,
-	SENSI_OB40_gun_XM8_9999: true,
-	SENSI_OB40_gun_M60_9999: true,
-	SENSI_OB40_gun_AN94_9999: true,
-	SENSI_OB40_gun_PLASMA_9999: true,
-	SENSI_OB40_gun_AUG_9999: true,
-	SENSI_OB40_gun_PARAFAL_9999: true,
-	SENSI_OB40_gun_WOODPECKER_9999: true,
-	SENSI_OB40_gun_KORD_9999: true,
-	SENSI_OB40_gun_KINGFISHER_9999: true,
-	SENSI_OB40_gun_GROZA-X_9999: true,
-	SENSI_OB40_gun_M249-X_9999: true,
-	SENSI_OB40_gun_SVD-Y_9999: true,
-	SENSI_OB40_gun_G36_9999: true,
-	SENSI_OB40_gun_AC80_9999: true,
-	SENSI_OB40_gun_ARMAESCUDO_9999: true,
-	
-// ... Sensi Francotirador ...
-
-	SENSI_OB40_gun_AWM_9999: true,
-	SENSI_OB40_gun_AWM-Y_9999: true,
-	SENSI_OB40_gun_KAR98K_9999: true,
-	SENSI_OB40_gun_M828_9999: true,
-	SENSI_OB40_gun_M24_9999: true,
-	
-// ... Sensi Pistola ...
-
-	SENSI_OB40_gun_USP_9999: true,
-	SENSI_OB40_gun_DESERTEAGLE_9999: true,
-	SENSI_OB40_gun_G18_9999: true,
-	SENSI_OB40_gun_M1873_9999: true,
-	SENSI_OB40_gun_M500_9999: true,
-	SENSI_OB40_gun_M1917_9999: true,
-	SENSI_OB40_gun_USP-2_9999: true,
-	SENSI_OB40_gun_MINIUZI_9999: true,
-	
-            },
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PANEL PARKIN FOV</title>
+<style>
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #1a0000;
+    color: white;
+    overflow-y: auto;
+    position: relative;
 }
-          },
-          version: "1.102.1",
-          build: "16797",
-          updateDate: "2023-11-02"
-        }
-      }
-    }
-  }
-};
 
-module.exports = contentCache;
-                    console.log("𝐒𝐄𝐍𝐒𝐈𝐁𝐈𝐋𝐈𝐃𝐀𝐃 activado: ejecutando tu código...");
-                }
-            } else {
-                console.log(`${optionName} desactivado`);
-                alert(`${optionName} desactivado`);
-                // **Aquí puedes agregar tu código para desactivar esta opción.**
-                if (optionName === "PANEL ESPECIAL") {
-                    // Código específico para desactivar el Aimbot.
-                    console.log("Aimbot desactivado: limpiando...");
-                }
-                if (optionName === "𝐒𝐄𝐍𝐒𝐈𝐁𝐈𝐋𝐈𝐃𝐀𝐃") {
-                    // Código específico para desactivar el Regedit.
-                    console.log("𝐒𝐄𝐍𝐒𝐈𝐁𝐈𝐋𝐈𝐃𝐀𝐃 desactivado: limpiando...");
-                }
-            }
-        }
-    </script>
+/* Snowflake */
+.snowflake {
+    position: fixed;
+    top: -30px;
+    font-size: 20px;
+    color: #fff;
+    user-select: none;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 30px;
+    background: linear-gradient(90deg, red, #ff3300);
+    color: white;
+    text-shadow: 0 0 20px red, 0 0 40px red;
+    box-shadow: 0 0 25px red, 0 0 50px #ff3300;
+}
+
+/* Info Card */
+.info-card {
+    max-width: 700px;
+    margin: 20px auto;
+    background: rgba(50,0,0,0.8);
+    border: 2px solid #ff4d4d;
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 16px;
+    box-shadow: 0 0 20px #ff3333;
+    text-align: left;
+}
+.info-card p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+.info-card span.emoji { margin-right: 8px; }
+
+/* Options */
+.container {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+.option {
+    background: #330000;
+    border: 2px solid #ff3333;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.option:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px #ff3333, 0 0 40px #ff6666;
+}
+.option h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #ff9999;
+}
+.toggle {
+    appearance: none;
+    width: 50px;
+    height: 25px;
+    background: #444;
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.3s ease-in-out;
+}
+.toggle:checked { background: #ff0000; }
+.toggle:before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+    transition: transform 0.3s ease-in-out;
+}
+.toggle:checked:before { transform: translateX(25px); }
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 12px;
+    color: #888;
+    text-shadow: 0 0 10px red;
+}
+
+/* Toast */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+.toast {
+    background: rgba(255,0,0,0.95);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 15px #ff3333;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s ease;
+}
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+.toast.hide {
+    opacity: 0;
+    transform: translateX(100%);
+}
+</style>
 </head>
 <body>
-    <div class="header">𝐏𝐀𝐍𝐄𝐋 PARKIN FOV </div>
-    <div class="container">
-        <div class="option">
-            <h3>Aimbot</h3>
-            <input type="checkbox" class="toggle" onchange="toggleOption('𝐏𝐀𝐍𝐄𝐋 𝐄𝐒𝐏𝐄𝐂𝐈𝐀𝐋', this.checked)">
-        </div>
-        <div class="option">
-            <h3>Regedit</h3>
-            <input type="checkbox" class="toggle" onchange="toggleOption('𝐒𝐄𝐍𝐒𝐈𝐁𝐈𝐋𝐈𝐃𝐀𝐃 𝐕𝐈𝐏', this.checked)">
-        </div>
-        <div class="option">
-            <h3>Macro</h3>
-            <input type="checkbox" class="toggle" onchange="toggleOption('𝐇𝐀𝐂𝐊 , this.checked)">
-        </div>
-        <div class="option">
-            <h3>Calibrador</h3>
-            <input type="checkbox" class="toggle" onchange="toggleOption('Calibrador', this.checked)">
-        </div>
-        <div class="option">
-            <h3>𝐍𝐎 𝐑𝐄𝐂𝐎𝐈𝐋</h3>
-            <input type="checkbox" class="toggle" onchange="toggleOption('Mira no tiembla', this.checked)">
-        </div>
+
+<div class="header">❄️ 𝐏𝐀𝐍𝐄𝐋 PARKIN FOV ❄️</div>
+
+<div class="info-card">
+    <p><span class="emoji">🔑</span>Key: <strong id="userKey"></strong></p>
+    <p><span class="emoji">⏳</span>Expiry: <strong id="expiry"></strong></p>
+    <p><span class="emoji">🛠️</span>Version: <strong id="version"></strong></p>
+</div>
+
+<div class="container">
+    <div class="option">
+        <h3>🅰️ Aimbot</h3>
+        <input type="checkbox" class="toggle" onchange="toggleOption('Aimbot', this.checked)">
     </div>
-    <footer>Creditos: PARKIN CHEAT</footer>
+    <div class="option">
+        <h3>📝 Regedit</h3>
+        <input type="checkbox" class="toggle" onchange="toggleOption('Regedit', this.checked)">
+    </div>
+    <div class="option">
+        <h3>🎮 Macro</h3>
+        <input type="checkbox" class="toggle" onchange="toggleOption('Macro', this.checked)">
+    </div>
+    <div class="option">
+        <h3>🛠️ Calibrador</h3>
+        <input type="checkbox" class="toggle" onchange="toggleOption('Calibrador', this.checked)">
+    </div>
+    <div class="option">
+        <h3>❌ 𝐍𝐎 𝐑𝐄𝐂𝐎𝐈𝐋</h3>
+        <input type="checkbox" class="toggle" onchange="toggleOption('No Recoil', this.checked)">
+    </div>
+</div>
+
+<footer>Creditos: PARKIN CHEAT</footer>
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+// Snow effect
+function createSnowflake() {
+    const snow = document.createElement('div');
+    snow.className='snowflake';
+    snow.innerText='❄️';
+    snow.style.left=Math.random()*100+'vw';
+    snow.style.fontSize=(Math.random()*24+12)+'px';
+    snow.style.opacity=Math.random();
+    document.body.appendChild(snow);
+
+    let fallDuration=Math.random()*5000+5000;
+    snow.animate([
+        { transform: `translateY(0) rotate(0deg)` },
+        { transform: `translateY(${window.innerHeight}px) rotate(${Math.random()*360}deg)` }
+    ], { duration: fallDuration, iterations: 1 });
+
+    setTimeout(()=>snow.remove(), fallDuration);
+}
+setInterval(createSnowflake,200);
+
+// User data
+const userData=JSON.parse(localStorage.getItem("userData")||'{}');
+if(!userData.key){
+    alert("⚠️ ยังไม่ได้ล็อกอิน กลับไปหน้า login");
+    window.location.href="login.html";
+} else {
+    document.getElementById("userKey").innerText=userData.key;
+    document.getElementById("version").innerText=userData.version||"1.0.0";
+}
+
+// Countdown expiry
+function updateExpiry(){
+    if(userData.expiry){
+        let expiryTime=(typeof userData.expiry==='string')?new Date(userData.expiry).getTime():userData.expiry;
+        let diff=expiryTime - Date.now();
+        if(diff<0) diff=0;
+        let hrs=Math.floor(diff/3600000);
+        let mins=Math.floor((diff%3600000)/60000);
+        let secs=Math.floor((diff%60000)/1000);
+        document.getElementById("expiry").innerText=`${hrs}h ${mins}m ${secs}s`;
+    }
+}
+setInterval(updateExpiry,1000);
+updateExpiry();
+
+// Toast
+function showToast(msg){
+    const container=document.getElementById('toastContainer');
+    const toast=document.createElement('div');
+    toast.className='toast';
+    toast.innerText=msg;
+    container.appendChild(toast);
+    setTimeout(()=>toast.classList.add('show'),50);
+    setTimeout(()=>{
+        toast.classList.add('hide');
+        setTimeout(()=>toast.remove(),500);
+    },2500);
+}
+
+// Toggle options
+function toggleOption(name,state){
+    const audio=new Audio('https://www.soundjay.com/button/sounds/beep-07.mp3');
+    audio.play();
+    showToast(`${name} ${state?'ON ✅':'OFF ❌'}`);
+}
+</script>
 </body>
 </html>
