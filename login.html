@@ -1,107 +1,103 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - PANEL PARKIN</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #1a0000, #4b0000);
-      color: white;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .login-box {
-      background: rgba(0, 0, 0, 0.8);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 25px red;
-      width: 320px;
-      text-align: center;
-      animation: float 5s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(-10px); }
-      50% { transform: translateY(10px); }
-    }
-
-    .login-box h2 {
-      margin-bottom: 20px;
-      color: #ff6666;
-      text-shadow: 0 0 10px red;
-    }
-
-    .login-box input {
-      width: 90%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 2px solid red;
-      border-radius: 8px;
-      background: #330000;
-      color: white;
-      outline: none;
-      font-size: 14px;
-    }
-
-    .login-box button {
-      width: 100%;
-      padding: 10px;
-      border: none;
-      border-radius: 8px;
-      background: linear-gradient(90deg, red, #ff3300);
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 0 20px red;
-      transition: transform 0.3s ease;
-    }
-
-    .login-box button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 40px red, 0 0 60px #ff3300;
-    }
-
-    .error {
-      margin-top: 10px;
-      color: #ff4444;
-      font-size: 13px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; font-family:'Segoe UI',sans-serif;}
+body { background: linear-gradient(135deg,#1a0000,#4b0000); color:#fff; display:flex; justify-content:center; align-items:center; height:100vh; position:relative;}
+.container { background: rgba(30,30,30,0.95); padding:30px; border-radius:15px; width:350px; box-shadow:0 0 30px rgba(255,0,0,0.7); text-align:center;}
+h2 { text-align:center; margin-bottom:20px; font-size:26px; color:#ff6666; text-shadow:0 0 10px red; }
+input, button { width:100%; padding:12px; margin:10px 0; border-radius:8px; border:1px solid red; background:#2a2a2a; color:#fff; font-size:16px; }
+button { background: linear-gradient(90deg,#ff3300,#ff0000); border:none; cursor:pointer; font-weight:bold; transition:0.3s; }
+button:hover { transform: scale(1.05); box-shadow:0 0 20px #ff3333; }
+.toast { position: fixed; top:20px; right:-350px; background: rgba(255,0,0,0.95); color:white; padding:15px 25px; border-radius:12px; font-size:14px; box-shadow:0 0 25px #ff0000; transition: right 0.5s ease-in-out; z-index:1000; }
+.toast.show { right:20px; }
+/* Modal Block */
+.modal {
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(0,0,0,0.85);
+    z-index:10000;
+    justify-content:center; align-items:center;
+}
+.modal-content {
+    background: #2a0000;
+    padding:40px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 0 30px #ff0000;
+}
+.modal-content h2 { margin-bottom:20px; color:#ff6666; text-shadow:0 0 10px red;}
+</style>
 </head>
 <body>
-  <div class="login-box">
-    <h2>🔑 Login KeyAuth</h2>
-    <input type="text" id="licenseKey" placeholder="Enter License Key">
-    <button onclick="login()">Login</button>
-    <div class="error" id="errorMsg"></div>
-  </div>
 
-  <script>
-    function login() {
-      const key = document.getElementById('licenseKey').value;
-      const errorMsg = document.getElementById('errorMsg');
+<div class="container">
+    <h2>🔑 Login</h2>
+    <input type="text" id="keyInput" placeholder="Enter your key">
+    <button id="loginBtn">Login</button>
+</div>
 
-      if (!key) {
-        errorMsg.innerText = "⚠️ กรุณากรอก License Key ก่อน.";
+<!-- Modal -->
+<div id="serverModal" class="modal">
+    <div class="modal-content">
+        <h2>🖥 Server Offline!</h2>
+        <p>ระบบปิดอยู่ขณะนี้ ไม่สามารถเข้าสู่ระบบได้</p>
+    </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+// Toast function
+function showToast(msg){
+    const toast = document.getElementById('toast');
+    toast.innerText = msg;
+    toast.classList.add('show');
+    setTimeout(()=>toast.classList.remove('show'),2500);
+}
+
+// Check server status
+let serverOnline = localStorage.getItem('serverStatus')==='offline'?false:true;
+if(!serverOnline){
+    const modal = document.getElementById('serverModal');
+    modal.style.display = 'flex';
+}
+
+// Login function
+document.getElementById('loginBtn').addEventListener('click', function(){
+    if(!serverOnline){
+        showToast('🖥 Server Offline! Cannot login ❌');
         return;
-      }
-
-      // 🚧 ตรงนี้คุณสามารถต่อ KeyAuth API ได้
-      // ตอนนี้ผมทำเป็น demo key ไว้
-      if (key === "TEST-123456") { 
-        // สมมุติคีย์ถูกต้อง
-        window.location.href = "index.html"; // ✅ ไปหน้า index.html
-      } else {
-        errorMsg.innerText = "❌ Key ไม่ถูกต้อง ลองใหม่อีกครั้ง.";
-      }
     }
-  </script>
+    const keyInput = document.getElementById('keyInput').value.trim();
+    const keys = JSON.parse(localStorage.getItem('keys')) || [];
+    const keyObj = keys.find(k => k.key===keyInput);
+    if(!keyObj){
+        showToast('❌ Invalid Key');
+        return;
+    }
+
+    const now = new Date();
+    const expiryDate = new Date(keyObj.expire);
+    if(now > expiryDate){
+        showToast('⏳ Key Expired!');
+        return;
+    }
+
+    localStorage.setItem('userData', JSON.stringify({
+        key: keyObj.key,
+        admin: keyObj.admin,
+        expiry: expiryDate.getTime(),
+        version: "1.0.0"
+    }));
+    showToast('✅ Login Successful');
+    setTimeout(()=>{ window.location.href="index.html"; },1000);
+});
+</script>
 </body>
 </html>
