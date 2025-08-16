@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - PANEL PARKIN</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1a0000, #4b0000);
+      color: white;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-box {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 25px red;
+      width: 320px;
+      text-align: center;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(-10px); }
+      50% { transform: translateY(10px); }
+    }
+
+    .login-box h2 {
+      margin-bottom: 20px;
+      color: #ff6666;
+      text-shadow: 0 0 10px red;
+    }
+
+    .login-box input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 2px solid red;
+      border-radius: 8px;
+      background: #330000;
+      color: white;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, red, #ff3300);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 20px red;
+      transition: transform 0.3s ease;
+    }
+
+    .login-box button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px red, 0 0 60px #ff3300;
+    }
+
+    .error {
+      margin-top: 10px;
+      color: #ff4444;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>🔑 Login KeyAuth</h2>
+    <input type="text" id="licenseKey" placeholder="Enter License Key">
+    <button onclick="login()">Login</button>
+    <div class="error" id="errorMsg"></div>
+  </div>
+
+  <script>
+    function login() {
+      const key = document.getElementById('licenseKey').value;
+      const errorMsg = document.getElementById('errorMsg');
+
+      if (!key) {
+        errorMsg.innerText = "⚠️ กรุณากรอก License Key ก่อน.";
+        return;
+      }
+
+      // 🚧 ตรงนี้คุณสามารถต่อ KeyAuth API ได้
+      // ตอนนี้ผมทำเป็น demo key ไว้
+      if (key === "TEST-123456") { 
+        // สมมุติคีย์ถูกต้อง
+        window.location.href = "index.html"; // ✅ ไปหน้า index.html
+      } else {
+        errorMsg.innerText = "❌ Key ไม่ถูกต้อง ลองใหม่อีกครั้ง.";
+      }
+    }
+  </script>
+</body>
+</html>
