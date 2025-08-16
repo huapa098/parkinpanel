@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; font-family:'Segoe UI',sans-serif; }
+body { background:#1a0000; color:#fff; display:flex; min-height:100vh; overflow:hidden; }
+.main { flex:1; padding:25px; overflow-y:auto; transition: margin-left 0.3s; }
+
+/* Sidebar */
+.sidebar { width:220px; background:#2a0000; display:flex; flex-direction:column; padding:20px; box-shadow:2px 0 10px rgba(0,0,0,0.5); transition: transform 0.3s; z-index:10; position:fixed; height:100%; }
+.sidebar.collapsed { transform: translateX(-100%); }
+.sidebar h2 { text-align:center; margin-bottom:30px; font-size:20px; color:#ff6666; }
+.sidebar a { color:#fff; text-decoration:none; padding:12px; margin:5px 0; border-radius:8px; display:block; transition:0.3s; font-weight:bold; }
+.sidebar a:hover { background:#ff0000; box-shadow:0 0 10px #ff3333; }
+
+/* Mobile toggle */
+#mobileToggle { position:fixed; top:15px; left:15px; z-index:20; background:#ff0000; border:none; padding:10px; border-radius:8px; cursor:pointer; }
+
+/* Tabs */
+.tab { display:none; }
+.tab.active { display:block; }
+
+/* Header */
+.header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+.header h1 { font-size:22px; color:#ff6666; }
+#clock { font-size:16px; color:#ff9999; font-weight:bold; }
+
+/* Toast */
+.toast { position: fixed; top:20px; right:-350px; background: rgba(255,0,0,0.95); color:white; padding:15px 25px; border-radius:12px; font-size:14px; box-shadow:0 0 25px #ff0000; transition: right 0.5s ease-in-out; z-index:1000; }
+.toast.show { right:20px; }
+
+/* Key Card Grid */
+.key-cards { display:grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap:20px; margin-top:15px; }
+.key-card, .add-card, .server-card {
+    background: linear-gradient(135deg,#330000,#660000);
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(255,0,0,0.7);
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    animation: fadeIn 0.5s ease forwards;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.key-card:hover, .add-card:hover, .server-card:hover { transform: translateY(-5px) scale(1.03); box-shadow:0 0 25px #ff5555; }
+
+/* Key Info */
+.key-text { font-weight:bold; font-size:16px; word-break:break-all; }
+.dates { font-size:14px; display:flex; justify-content:space-between; }
+.status { display:flex; align-items:center; gap:5px; font-weight:bold; }
+.status-dot { width:12px; height:12px; border-radius:50%; display:inline-block; }
+
+/* Buttons */
+.key-card button, .add-card button, .server-card button {
+    padding:6px 12px; border:none; border-radius:8px; background: linear-gradient(90deg,#ff3300,#ff0000); color:#fff; font-weight:bold; cursor:pointer; transition:0.3s;
+}
+.key-card button:hover, .add-card button:hover, .server-card button:hover { transform: scale(1.05); box-shadow:0 0 20px #ff5555; }
+
+/* Add Key Card */
+.add-card { max-width:400px; margin:auto; padding:20px; gap:15px; }
+.add-card select { width:100%; padding:12px; border-radius:10px; border:1px solid red; background:#2a2a2a; color:#fff; appearance:none; cursor:pointer; }
+
+/* Server Card */
+.server-card { max-width:400px; margin:auto; padding:20px; gap:15px; text-align:center; }
+
+/* Animations */
+@keyframes fadeIn { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
+
+@media(max-width:600px){ .key-card, .add-card, .server-card { min-width:100%; } }
+</style>
+</head>
+<body>
+
+<!-- Sidebar & toggle -->
+<button id="mobileToggle" onclick="toggleSidebar()">☰</button>
+<div class="sidebar" id="sidebar">
+    <h2>ADMIN PANEL</h2>
+    <a href="#" onclick="openTab('home')">🏠 Home</a>
+    <a href="#" onclick="openTab('manage')">🗂 Manage Keys</a>
+    <a href="#" onclick="openTab('add')">➕ Add Key</a>
+    <a href="#" onclick="openTab('server')">🖥 Server</a>
+</div>
+
+<div class="main">
+    <div class="header">
+        <h1>Dashboard</h1>
+        <div id="clock">🕒 Loading...</div>
+    </div>
+
+    <!-- Home Tab -->
+    <div id="home" class="tab container active">
+        <h3>🏠 Recent Keys</h3>
+        <div class="key-cards" id="recentKeyCards"></div>
+    </div>
+
+    <!-- Manage Tab -->
+    <div id="manage" class="tab container">
+        <h3>🗂 Key List</h3>
+        <div class="key-cards" id="manageKeyCards"></div>
+    </div>
+
+    <!-- Add Key Tab -->
+    <div id="add" class="tab container">
+        <h3 style="text-align:center; margin-bottom:20px;">➕ Add New Key</h3>
+        <div class="add-card">
+            <label for="duration">Select Duration:</label>
+            <select id="duration">
+                <option value="day">1 Day</option>
+                <option value="week">1 Week</option>
+                <option value="month">1 Month</option>
+            </select>
+            <button onclick="addKey()">Generate Key</button>
+        </div>
+    </div>
+
+    <!-- Server Tab -->
+    <div id="server" class="tab container">
+        <div class="server-card">
+            <h3>🖥 Server Status</h3>
+            <p>Status: <strong id="serverStatus" style="color:lightgreen;">Online</strong></p>
+            <button onclick="toggleServer()">Toggle Server</button>
+        </div>
+    </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+// Clock
+function updateClock(){document.getElementById('clock').innerText=`🕒 ${new Date().toLocaleTimeString()}`;}
+setInterval(updateClock,1000); updateClock();
+
+// Tabs
+function openTab(tabId){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active')); document.getElementById(tabId).classList.add('active');}
+
+// Sidebar toggle
+function toggleSidebar(){document.getElementById('sidebar').classList.toggle('collapsed');}
+
+// Toast
+function showToast(msg){const t=document.getElementById('toast'); t.innerText=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2000);}
+
+// Server
+let serverOnline=true;
+function toggleServer(){
+    serverOnline=!serverOnline; 
+    const s=document.getElementById('serverStatus'); 
+    s.innerText=serverOnline?'Online':'Offline'; 
+    s.style.color=serverOnline?'lightgreen':'red'; 
+    localStorage.setItem('serverStatus',serverOnline?'online':'offline'); 
+    showToast(`🖥 Server is now ${serverOnline?'Online ✅':'Offline ❌'}`);
+}
+if(localStorage.getItem('serverStatus')==='offline'){ serverOnline=false; document.getElementById('serverStatus').innerText='Offline'; document.getElementById('serverStatus').style.color='red';}
+
+// Keys
+let keys=JSON.parse(localStorage.getItem('keys'))||[];
+
+// สุ่มคีย์แบบ Parkin_
+function generateRandomKey(length=8){
+    const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let key='';
+    for(let i=0;i<length;i++) key+=chars.charAt(Math.floor(Math.random()*chars.length));
+    return `Parkin_${key}`;
+}
+
+// Add Key
+function addKey(){
+    const dur=document.getElementById('duration').value;
+    const key=generateRandomKey();
+    let expire=new Date();
+    if(dur==='day') expire.setDate(expire.getDate()+1);
+    if(dur==='week') expire.setDate(expire.getDate()+7);
+    if(dur==='month') expire.setMonth(expire.getMonth()+1);
+    const created = new Date().toISOString().split('T')[0];
+    keys.push({key:key, expire:expire.toISOString().split('T')[0], status:'Available', created: created});
+    localStorage.setItem('keys',JSON.stringify(keys));
+    renderKeyCards();
+    renderManageCards();
+    showToast(`✅ Key Generated`);
+    openTab('manage');
+}
+
+// Delete Key
+function deleteKey(i){
+    keys.splice(i,1);
+    localStorage.setItem('keys',JSON.stringify(keys));
+    renderKeyCards();
+    renderManageCards();
+    showToast('🗑️ Key deleted');
+}
+
+// Render Home Key Cards
+function renderKeyCards(){
+    const container=document.getElementById('recentKeyCards');
+    container.innerHTML='';
+    keys.slice(-10).reverse().forEach(k=>{
+        const expired=new Date(k.expire)<new Date();
+        const card=document.createElement('div');
+        card.className='key-card';
+        card.innerHTML=`<div class="key-text">${k.key}</div>
+        <div class="dates"><span>Created: ${k.created}</span><span>Expire: ${k.expire}</span></div>
+        <div class="status"><span class="status-dot" style="background:${expired?'red':'green'}"></span><span>${expired?'Expired':'Available'}</span></div>
+        <button onclick="deleteKey(${keys.indexOf(k)})">❌ Delete</button>`;
+        container.appendChild(card);
+    });
+}
+
+// Render Manage Key Cards
+function renderManageCards(){
+    const container=document.getElementById('manageKeyCards');
+    container.innerHTML='';
+    keys.slice().reverse().forEach(k=>{
+        const expired=new Date(k.expire)<new Date();
+        const card=document.createElement('div');
+        card.className='key-card';
+        card.innerHTML=`<div class="key-text">${k.key}</div>
+        <div class="dates"><span>Created: ${k.created}</span><span>Expire: ${k.expire}</span></div>
+        <div class="status"><span class="status-dot" style="background:${expired?'red':'green'}"></span><span>${expired?'Expired':'Available'}</span></div>
+        <button onclick="deleteKey(${keys.indexOf(k)})">❌ Delete</button>`;
+        container.appendChild(card);
+    });
+}
+
+// เรียก render ตอนโหลด
+renderKeyCards();
+renderManageCards();
+</script>
+</body>
+</html>
