@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PANEL BEII999</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #001a33, #003366);
+            color: white;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #0099ff, #0066cc);
+            text-align: center;
+            padding: 20px;
+            font-weight: bold;
+            font-size: 30px;
+            color: white;
+            text-shadow: 0 0 20px #00ccff, 0 0 40px #0099ff;
+            box-shadow: 0 0 25px #0099ff, 0 0 50px #00ccff;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 20px #0099ff, 0 0 40px #00ccff;
+            }
+            to {
+                box-shadow: 0 0 40px #00ccff, 0 0 80px #33ccff;
+            }
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 700px;
+            margin: 50px auto;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(-10px);
+            }
+            50% {
+                transform: translateY(10px);
+            }
+        }
+
+        .option {
+            background: #002244;
+            border: 2px solid #0099ff;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px #0099ff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .option:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px #00ccff, 0 0 60px #33ccff;
+        }
+
+        .option h3 {
+            margin: 0;
+            font-size: 20px;
+            color: #66ccff;
+            text-shadow: 0 0 10px #00ccff;
+        }
+
+        .toggle {
+            appearance: none;
+            width: 50px;
+            height: 25px;
+            background: #444;
+            border-radius: 15px;
+            position: relative;
+            cursor: pointer;
+            outline: none;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .toggle:checked {
+            background: #0099ff;
+        }
+
+        .toggle:before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 2.5px;
+            left: 2.5px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .toggle:checked:before {
+            transform: translateX(25px);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #aaa;
+            text-shadow: 0 0 10px #00ccff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">𝐏𝐀𝐍𝐄𝐋 BEII999 FOV</div>
+    <div class="container">
+        <div class="option">
+            <h3>Aimbot</h3>
+            <input type="checkbox" class="toggle" onchange="toggleOption('𝐏𝐀𝐍𝐄𝐋 𝐄𝐒𝐏𝐄𝐂𝐈𝐀𝐋', this.checked)">
+        </div>
+        <div class="option">
+            <h3>Regedit</h3>
+            <input type="checkbox" class="toggle" onchange="toggleOption('𝐒𝐄𝐍𝐒𝐈𝐁𝐈𝐋𝐈𝐃𝐀𝐃 𝐕𝐈𝐏', this.checked)">
+        </div>
+        <div class="option">
+            <h3>Macro</h3>
+            <input type="checkbox" class="toggle" onchange="toggleOption('𝐇𝐀𝐂𝐊', this.checked)">
+        </div>
+        <div class="option">
+            <h3>Calibrador</h3>
+            <input type="checkbox" class="toggle" onchange="toggleOption('Calibrador', this.checked)">
+        </div>
+        <div class="option">
+            <h3>𝐍𝐎 𝐑𝐄𝐂𝐎𝐈𝐋</h3>
+            <input type="checkbox" class="toggle" onchange="toggleOption('Mira no tiembla', this.checked)">
+        </div>
+    </div>
+    <footer>Creditos: LL CHEAT</footer>
+</body>
+</html>
